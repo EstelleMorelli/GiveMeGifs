@@ -1,17 +1,20 @@
-import Image from "next/image";
 import Link from 'next/link';
-import Header from "./components/header";
+import Image from "next/image";
 
-const getShoes = async() => {
-  const resultJSON = await fetch("https://moustoifa.com/projets/Oshop/public/api/v1/product/");
-  const result = await resultJSON.json();
-  return result;
-}
+const getProductsFromCateg = async(id: number) => {
+    const resultJSON = await fetch(`https://moustoifa.com/projets/Oshop/public/api/v1/category/${id}`);
+    const result = await resultJSON.json();
+    return result;
+  }
 
-export default async function Home() {
-  const shoesList = await getShoes();
-  return (
-    <div className="flex flex-col justify-between bg-white">
+export default async function NavPage({
+    params,
+}:{
+    params: {id: number};
+}) {
+    const shoesList = await getProductsFromCateg(params.id);
+    return (
+        <div className="flex flex-col bg-white">
       <main className="p-4 text-center text-black">
         <div className="flex flex-wrap">
           {shoesList.map((shoe) => (
@@ -31,5 +34,5 @@ export default async function Home() {
         </div>
         </main>
       </div>
-  );
+    )
 }
