@@ -8,6 +8,38 @@ const getShoes = async() => {
   return result;
 }
 
+const categoriesList = [
+  "Détente",
+  "Au travail",
+  "Cérémonie",
+  "Sortir",
+  "Vintage",
+  "Piscine et bains",
+  "Sport"
+]
+
+const brandsList = [
+  "oCirage",
+  "BOOTstrap",
+  "Talonette",
+  "Shossures",
+  "Oshoes",
+  "Pattes d'eph",
+  "PHPieds",
+  "oPompes"
+]
+
+const typesList = [
+  "Chaussures de ville",
+  "Chaussures de sport",
+  "Tongs",
+  "Chaussures ouvertes",
+  "Talons éguilles",
+  "Talons",
+  "Pantoufles",
+  "Chaussons"
+]
+
 export default async function Home() {
   const shoesList = await getShoes();
   return (
